@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notas</title>
+</head>
+
+<body>
+    <script>
+        const notasAlunos = [
+            ["João", 8, 7, 9],
+            ["Gustavo", 6, 5, 7],
+            ["Matheus", 9, 8, 10],
+            ["Leonardo", 4, 6, 5],
+            ["Leandro", 7, 7, 7]
+        ];
+
+        console.log("📋 Boletim Escolar:\n");
+
+        notasAlunos.forEach(aluno => {
+            const nome = aluno[0];
+            const notas = aluno.slice(1);
+
+            const media = notas.reduce((soma, nota) => soma + nota, 0) / notas.length;
+            const status = media >= 7 ? "✅ Aprovado" : "❌ Reprovado";
+
+            console.log(`Aluno: ${nome}`);
+            console.log(`Notas: ${notas.join(", ")}`);
+            console.log(`Média: ${media.toFixed(2)}`);
+            console.log(`Status: ${status}\n`);
+        });
+    </script>
+</body>
+
+</html>
