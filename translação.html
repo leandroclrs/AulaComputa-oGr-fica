@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efeito Ocioso TV Antiga</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: rgb(255, 255, 255);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgb(0, 0, 0);
+        }
+
+        .quadrado {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border: 1px solid black
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Translação</h2>
+    <div class="container">
+        <div class="quadrado" id="quadrado"></div>
+    </div>
+    <script>
+        const quadrado = document.getElementById("quadrado");
+        let posX = 55, posY = 95;
+        let velX = 5, velY = 5;
+
+        function animar() {
+            const container = document.querySelector(".container");
+            const larguraContainer = container.clientWidth;
+            const alturaContainer = container.clientHeight;
+
+            posX += velX;
+            posY += velY;
+
+            if (posX + 50 >= larguraContainer || posX <= 0) {
+                velX *= -1;
+            }
+            if (posY + 50 >= alturaContainer || posY <= 0) {
+                velY *= -1;
+            }
+
+            quadrado.style.left = posX + "px";
+            quadrado.style.top = posY + "px";
+            requestAnimationFrame(animar);
+        }
+
+        animar();
+    </script>
+</body>
+
+</html>
